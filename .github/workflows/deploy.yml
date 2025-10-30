@@ -29,17 +29,14 @@ jobs:
           cd /tmp
           wget -c https://github.com/jgm/pandoc/releases/download/3.1.13/pandoc-3.1.13-1-amd64.deb
           sudo dpkg -i pandoc-3.1.13-1-amd64.deb
-      - uses: pnpm/action-setup@v3
-        with:
-          version: 9
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
-          cache: "pnpm"
+          node-version: "22"
+          cache: "npm"
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: npm install --no-frozen-lockfile
       - name: Build
-        run: pnpm run build
+        run: npm run build
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
